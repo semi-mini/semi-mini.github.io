@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>✨ 나의 작은 세계 ✨</title>
+<link href="https://fonts.googleapis.com/css2?family=Galmuri11&display=swap" rel="stylesheet">
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+ul {
+    list-style-type: none;
+}
+body {
+    font-family: 'Galmuri11', "맑은 고딕", monospace;
+    font-size: 100%;
+    background-color: #ddf4ff;
+}
+
+[class*="c_"] {
+    float: left;
+    padding: 10px;
+}
+[class*="c_"] { float: left; padding: 10px; }
+[class*="c_"] { width: 100%; }
+@media only screen and (min-width: 600px) {
+    .c_m_3{width:25%;} .c_m_9{width:75%;} .c_m_12{width:100%;}
+}
+@media only screen and (min-width: 768px) {
+    .c_3{width:25%;} .c_9{width:75%;} .c_12{width:100%;}
+}
+
+/* ===== 헤더 ===== */
+header {
+    height: 80px;
+    padding: 20px;
+    background-color: #ffd6c0;
+    border-bottom: 3px solid #3d2b1f;
+    box-shadow: 0 3px 0 #3d2b1f;
+}
+header h1 {
+    font-size: 1.2em;
+    color: #3d2b1f;
+}
+
+/* ===== 내비게이션 메뉴 (aside#menu) ===== */
+aside#menu {
+    color: #ffffff;
+}
+aside#menu li {
+    padding: 10px;
+    margin: 5px 0 0 0;
+    background-color: #ff6b9d;
+    border: 2px solid #3d2b1f;
+    box-shadow: 3px 3px 0 #3d2b1f;
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: transform 0.1s, box-shadow 0.1s;
+}
+aside#menu li:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 4px 4px 0 #3d2b1f;
+    background-color: #ff9ec8;
+}
+aside#menu li a {
+    color: #ffffff;
+    text-decoration: none;
+    display: block;
+}
+
+/* ===== 메인 콘텐츠 ===== */
+section#main {
+    padding: 15px;
+}
+section#main h1 {
+    font-size: 1.1em;
+    color: #3d2b1f;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 0 #c9a882;
+}
+section#main p {
+    padding: 5px;
+    font-size: 0.9em;
+    line-height: 150%;
+    color: #3d2b1f;
+}
+
+/* 말풍선 */
+.speech-bubble {
+    background: #ffffff;
+    border: 3px solid #3d2b1f;
+    box-shadow: 4px 4px 0 #3d2b1f;
+    padding: 12px 16px;
+    position: relative;
+    font-size: 0.88em;
+    color: #3d2b1f;
+    line-height: 1.8;
+    margin-bottom: 16px;
+}
+.speech-bubble::before {
+    content: '';
+    position: absolute;
+    bottom: -16px; left: 24px;
+    border: 7px solid transparent;
+    border-top-color: #3d2b1f;
+}
+.speech-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -10px; left: 25px;
+    border: 6px solid transparent;
+    border-top-color: #ffffff;
+}
+
+/* 버튼 */
+.px-btn {
+    display: inline-block;
+    padding: 8px 16px;
+    background: #a8f0d8;
+    color: #3d2b1f;
+    border: 3px solid #3d2b1f;
+    box-shadow: 4px 4px 0 #3d2b1f;
+    font-family: 'Galmuri11', monospace;
+    font-size: 0.85em;
+    text-decoration: none;
+    cursor: pointer;
+    margin: 4px 4px 4px 0;
+    transition: transform 0.1s, box-shadow 0.1s;
+}
+.px-btn:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 #3d2b1f; }
+.px-btn:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 #3d2b1f; }
+.px-btn.pink     { background: #ffcce0; }
+.px-btn.yellow   { background: #fff9c4; }
+.px-btn.lavender { background: #e8d8ff; }
+
+/* 이야기 지도 게시판 */
+.notice-board {
+    background: #fff9c4;
+    border: 3px solid #3d2b1f;
+    box-shadow: 4px 4px 0 #3d2b1f;
+    padding: 14px 16px;
+    margin: 10px 0;
+    position: relative;
+    font-size: 0.85em;
+    color: #5c3d2e;
+    line-height: 1.9;
+}
+.notice-board::before {
+    content: '📌';
+    position: absolute;
+    top: -12px; left: 12px;
+    font-size: 18px;
+}
+
+/* 카드 목록 */
+.card-list li {
+    margin: 8px 0;
+    border: 2px solid #3d2b1f;
+    box-shadow: 3px 3px 0 #3d2b1f;
+    background: #ffffff;
+    overflow: hidden;
+}
+.card-list li a {
+    display: block;
+    padding: 10px 14px;
+    text-decoration: none;
+    color: #3d2b1f;
+    font-size: 0.88em;
+    transition: background 0.1s;
+}
+.card-list li a:hover {
+    background: #ddf4ff;
+}
+.card-tag {
+    display: inline-block;
+    padding: 2px 7px;
+    font-size: 0.75em;
+    border: 1px solid #3d2b1f;
+    margin-right: 6px;
+    background: #fff9c4;
+}
+.card-desc {
+    font-size: 0.78em;
+    color: #8b5e3c;
+    margin-top: 4px;
+    line-height: 1.6;
+}
+
+/* 상태바 패널 */
+.status-panel {
+    background: #ffffff;
+    border: 3px solid #3d2b1f;
+    box-shadow: 4px 4px 0 #3d2b1f;
+    padding: 14px 16px;
+    margin: 10px 0;
+}
+.status-panel h4 {
+    font-size: 0.85em;
+    color: #3d2b1f;
+    margin-bottom: 10px;
+}
+.status-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+.status-label {
+    font-size: 0.78em;
+    width: 80px;
+    flex-shrink: 0;
+    color: #3d2b1f;
+}
+.status-bar-wrap {
+    flex: 1;
+    height: 14px;
+    background: #ddf4ff;
+    border: 2px solid #3d2b1f;
+    overflow: hidden;
+}
+.status-bar-fill { height: 100%; }
+.status-val {
+    font-size: 0.78em;
+    width: 46px;
+    text-align: right;
+    flex-shrink: 0;
+}
+
+/* 데코 태그 */
+.deco-row { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
+.deco-item {
+    padding: 3px 8px;
+    border: 2px solid #3d2b1f;
+    font-size: 0.78em;
+    background: #a8f0d8;
+    box-shadow: 2px 2px 0 #3d2b1f;
+}
+
+/* ===== 푸터 ===== */
+footer {
+    height: 60px;
+    padding: 10px;
+    clear: both;
+    text-align: center;
+    background-color: #fffaf0;
+    border-top: 3px solid #3d2b1f;
+    font-size: 0.85em;
+    color: #5c3d2e;
+}
+</style>
+</head>
+<body>
+
+  <!-- ===== 헤더 ===== -->
+  <header class="c_12">
+    <h1>✨ 나의 작은 세계 ✨</h1>
+  </header>
+
+  <!-- ===== 내비게이션 메뉴 ===== -->
+  <aside id="menu" class="c_m_3 c_3">
+    <ul>
+      <li><a href="index.html">🌟 시작 화면</a></li>
+      <li><a href="work.html">💼 이전 회사</a></li>
+      <li><a href="travel.html">✈️ 여행</a></li>
+      <li><a href="dual-major.html">📚 복수전공</a></li>
+      <li><a href="future.html">🌈 앞으로의 꿈</a></li>
+      <li><a href="game-dev.html">🎮 게임 개발</a></li>
+    </ul>
+  </aside>
+
+  <!-- ===== 메인 콘텐츠 ===== -->
+  <section id="main" class="c_m_9 c_9">
+
+    <div class="speech-bubble">
+      안녕하세요~! ✨<br>
+      여기는 <strong>나만의 작은 세계</strong>예요!<br>
+      제 이야기들을 구경해 보세요 🌸
+    </div>
+
+    <h1>[ 나의 이야기 ] 아기자기한 나만의 다이어리</h1>
+
+    <div style="margin: 12px 0;">
+      <a class="px-btn mint"   href="work.html">💼 회사 이야기</a>
+      <a class="px-btn yellow"     href="dual-major.html">📚 복수전공 이야기</a>
+      <a class="px-btn lavender"   href="travel.html">✈️ 여행 이야기</a>
+      <a class="px-btn orange" href="future.html">🌈 꿈 이야기</a>
+    </div>
+
+    <div class="notice-board">
+      안녕하세요! 이곳은 제 이야기들을 모아둔 공간이에요.<br>
+      이전 직장 이야기, 복수전공 도전기, 즐거웠던 여행들,<br>
+      그리고 앞으로의 꿈까지! 천천히 읽어주세요 🌷
+    </div>
+
+    <ul class="card-list">
+      <li>
+        <a href="work.html">
+          <span class="card-tag">Chapter 01</span><strong>이전 회사 이야기</strong>
+          <p class="card-desc">학교 가기 전, 다니던 회사에서의 경험과 배웠던 것들에 대한 이야기예요.</p>
+        </a>
+      </li>
+      <li>
+        <a href="dual-major.html">
+          <span class="card-tag">Chapter 02</span><strong>복수전공 이야기</strong>
+          <p class="card-desc">두 개의 전공을 선택한 이유와 공부를 하며 느낀 점에 대한 이야기예요.</p>
+        </a>
+      </li>
+      <li>
+        <a href="travel.html">
+          <span class="card-tag">Chapter 03</span><strong>여행 이야기</strong>
+          <p class="card-desc">다녀온 여행들 중에서 인상깊은 여행, 설레고 따뜻했던 기억들을 기록했어요.</p>
+        </a>
+      </li>
+      <li>
+        <a href="future.html">
+          <span class="card-tag">Chapter 04</span><strong>앞으로의 꿈 이야기</strong>
+          <p class="card-desc">지금 이 순간에도 꿈꾸고 있는 것들에 대한 이야기예요.</p>
+        </a>
+      </li>
+      <li>
+        <a href="game-dev.html">
+          <span class="card-tag">Chapter 05</span><strong>게임 개발 이야기</strong>
+          <p class="card-desc">언젠가 귀엽고 아기자기한 게임을 만들고 싶어요. 그 꿈의 시작이에요.</p>
+        </a>
+      </li>
+      <li>
+        <a href="#" style="opacity:0.5; cursor:default;">
+          <span class="card-tag">Coming soon</span><strong>이야기 추가 예정</strong>
+          <p class="card-desc">새로운 이야기가 쌓이면 여기에 추가할 거예요 🌱</p>
+        </a>
+      </li>
+    </ul>
+
+    <!-- 상태 패널 -->
+    <div class="status-panel">
+      <h4>📊 현재 나의 상태</h4>
+      <div style="font-size:0.78em; color:#8b5e3c; margin-bottom:10px;">▼ 지금 이 순간의 나</div>
+      <div class="status-row">
+        <span class="status-label">☀️ 에너지</span>
+        <div class="status-bar-wrap"><div class="status-bar-fill" style="width:88%; background:#ffe066;"></div></div>
+        <span class="status-val">88/100</span>
+      </div>
+      <div class="status-row">
+        <span class="status-label">📚 공부 의욕</span>
+        <div class="status-bar-wrap"><div class="status-bar-fill" style="width:25%; background:#a8f0d8;"></div></div>
+        <span class="status-val">25/100</span>
+      </div>
+      <div class="status-row">
+        <span class="status-label">🎮 게임 열정</span>
+        <div class="status-bar-wrap"><div class="status-bar-fill" style="width:72%; background:#e8d8ff;"></div></div>
+        <span class="status-val">72/100</span>
+      </div>
+      <div class="status-row">
+        <span class="status-label">✈️ 여행 욕구</span>
+        <div class="status-bar-wrap"><div class="status-bar-fill" style="width:80%; background:#ffd6c0;"></div></div>
+        <span class="status-val">80/100</span>
+      </div>
+    </div>
+
+    <div class="deco-row">
+      <span class="deco-item">🎓 (이름만) 대학생</span>
+      <span class="deco-item">💻 복수전공 도전</span>
+      <span class="deco-item">🌸 여행 갈까말까</span>
+      <span class="deco-item">🎮 게임개발 꿈꾸는 중</span>
+      <span class="deco-item">🏠 항상 집가고 싶은 마음</span>
+    </div>
+
+  </section>
+
+  <!-- ===== 푸터 ===== -->
+  <footer class="c_12">
+    ✨ 나만의 이야기를 담은 공간 ✨<br>
+    <span style="font-size:0.8em;">내용을 채워가는 중이에요 🌱</span>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💼 이전 회사 이야기 | 나의 작은 세계</title>
+<link href="https://fonts.googleapis.com/css2?family=Galmuri11&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+ul { list-style-type: none; }
+body {
+    font-family: 'Galmuri11', "맑은 고딕", monospace;
+    font-size: 100%;
+    background-color: #ddf4ff;
+}
+[class*="c_"] { float: left; padding: 10px; }
+[class*="c_"] { width: 100%; }
+@media only screen and (min-width: 600px) {
+    .c_m_3{width:25%;} .c_m_9{width:75%;} .c_m_12{width:100%;}
+}
+@media only screen and (min-width: 768px) {
+    .c_3{width:25%;} .c_9{width:75%;} .c_12{width:100%;}
+}
+
+header {
+    height: 80px; padding: 20px;
+    background-color: #a8f0d8;
+    border-bottom: 3px solid #3d2b1f;
+    box-shadow: 0 3px 0 #3d2b1f;
+}
+header h1 { font-size: 1.1em; color: #3d2b1f; }
+
+aside#menu { color: #ffffff; }
+aside#menu li {
+    padding: 10px; margin: 5px 0 0 0;
+    background-color: #ff6b9d;
+    border: 2px solid #3d2b1f;
+    box-shadow: 3px 3px 0 #3d2b1f;
+    font-size: 0.9em; cursor: pointer;
+    transition: transform 0.1s, box-shadow 0.1s;
+}
+aside#menu li:hover { transform: translate(-1px,-1px); box-shadow: 4px 4px 0 #3d2b1f; background-color: #ff9ec8; }
+aside#menu li a { color: #ffffff; text-decoration: none; display: block; }
+
+section#main { padding: 15px; }
+section#main h1 { font-size: 1.1em; color: #3d2b1f; margin-bottom: 10px; text-shadow: 2px 2px 0 #c9a882; }
+section#main p { padding: 5px; font-size: 0.9em; line-height: 150%; color: #3d2b1f; }
+
+.speech-bubble {
+    background: #ffffff; border: 3px solid #3d2b1f; box-shadow: 4px 4px 0 #3d2b1f;
+    padding: 12px 16px; position: relative;
+    font-size: 0.88em; color: #3d2b1f; line-height: 1.8; margin-bottom: 16px;
+}
+.speech-bubble::before { content:''; position:absolute; bottom:-16px; left:24px; border:7px solid transparent; border-top-color:#3d2b1f; }
+.speech-bubble::after  { content:''; position:absolute; bottom:-10px; left:25px; border:6px solid transparent; border-top-color:#ffffff; }
+
+.sec-head { display:flex; align-items:center; gap:8px; margin:20px 0 10px; }
+.sec-icon {
+    width:28px; height:28px; background:#a8f0d8; border:2px solid #3d2b1f;
+    box-shadow:2px 2px 0 #3d2b1f; display:flex; align-items:center; justify-content:center; font-size:13px;
+}
+.sec-title { font-size:0.95em; color:#3d2b1f; text-shadow:2px 2px 0 #c9a882; }
+
+.diary-card { background:#ffffff; border:3px solid #3d2b1f; box-shadow:4px 4px 0 #3d2b1f; margin-bottom:16px; overflow:hidden; }
+.diary-card-header { padding:10px 14px; border-bottom:2px solid #3d2b1f; display:flex; align-items:center; gap:8px; }
+.diary-tag { padding:3px 8px; border:2px solid #3d2b1f; font-size:0.75em; }
+.diary-card-body { padding:14px; }
+.diary-card-body p { font-size:0.82em; color:#8b5e3c; line-height:1.9; margin-bottom:10px; }
+.diary-card-body p:last-child { margin-bottom:0; }
+strong { color:#3d2b1f; }
+
+.notice {
+    background:#a8f0d8; border:3px solid #3d2b1f; box-shadow:3px 3px 0 #3d2b1f;
+    padding:12px 14px; margin-bottom:14px; font-size:0.82em; color:#5c3d2e; line-height:1.8;
+}
+
+.two-col-list li {
+    margin: 8px 0;
+    border: 2px solid #3d2b1f;
+    box-shadow: 3px 3px 0 #3d2b1f;
+    background: #ffffff;
+    padding: 12px 14px;
+}
+.mini-card-icon { font-size: 1.2em; margin-bottom: 4px; }
+.mini-card-title { font-size: 0.88em; margin-bottom: 4px; }
+.mini-card-desc { font-size: 0.78em; color: #8b5e3c; line-height: 1.8; }
+
+.timeline { position:relative; padding-left:28px; }
+.timeline::before { content:''; position:absolute; left:10px; top:0; bottom:0; width:3px; background:repeating-linear-gradient(180deg,#3d2b1f 0,#3d2b1f 6px,transparent 6px,transparent 10px); }
+.tl-item { position:relative; margin-bottom:16px; }
+.tl-item::before { content:'◆'; position:absolute; left:-24px; top:14px; font-size:9px; color:#3d2b1f; }
+.tl-box { background:#ffffff; border:2px solid #3d2b1f; box-shadow:3px 3px 0 #3d2b1f; padding:12px 14px; }
+.tl-date  { font-size:0.75em; color:#8b5e3c; margin-bottom:4px; }
+.tl-title { font-size:0.88em; margin-bottom:6px; }
+.tl-desc  { font-size:0.78em; color:#8b5e3c; line-height:1.8; }
+
+.chip-row { display:flex; gap:6px; flex-wrap:wrap; margin:10px 0; }
+.chip { padding:4px 10px; border:2px solid #3d2b1f; font-size:0.78em; box-shadow:2px 2px 0 #3d2b1f; }
+
+footer {
+    height:60px; padding:10px; clear:both; text-align:center;
+    background-color:#fffaf0; border-top:3px solid #3d2b1f; font-size:0.85em; color:#5c3d2e;
+}
+</style>
+</head>
+<body>
+
+  <header class="c_12">
+    <h1>💼 이전 회사 이야기 | 나의 작은 세계</h1>
+  </header>
+
+  <aside id="menu" class="c_m_3 c_3">
+    <ul>
+      <li><a href="index.html">🌟 시작 화면</a></li>
+      <li><a href="work.html">💼 이전 회사</a></li>
+      <li><a href="travel.html">✈️ 여행</a></li>
+      <li><a href="dual-major.html">📚 복수전공</a></li>
+      <li><a href="future.html">🌈 앞으로의 꿈</a></li>
+      <li><a href="game-dev.html">🎮 게임 개발</a></li>
+    </ul>
+  </aside>
+
+  <section id="main" class="c_m_9 c_9">
+
+    <h1>이전 회사 이야기</h1>
+    <p>대학에 오기 전, 내가 다니던 회사에서의 경험과 배웠던 것들을 기록해요 ☕</p>
+
+    <div class="speech-bubble">
+      사실 저는 <strong>대학교에 오기 전에 회사를 다녔어요</strong>!<br>
+      그 경험이 지금의 저를 만든 것 같아요 🌱<br>
+      이 페이지에서는 그때의 이야기를 적을 거예요.
+    </div>
+
+    <div class="sec-head">
+      <div class="sec-icon">🏢</div>
+      <div class="sec-title">어떤 회사였나요?</div>
+    </div>
+
+    <div class="diary-card">
+      <div class="diary-card-header">
+        <div class="diary-tag" style="background:#a8f0d8;">회사 소개</div>
+        <span style="font-size:0.8em;">영등포에 위치했던 한 중견기업 ✏️</span>
+      </div>
+      <div class="diary-card-body">
+        <p>
+          <strong>[ 3년간 다녔던 IT기업 ]</strong><br>
+        </p>
+        <p>
+          처음 입사했을 때의 긴장감, 첫 월급을 받았을 때의 기쁨,<br>
+          함께 일했던 사람들에 대한 이야기도 좋아요!
+        </p>
+      </div>
+    </div>
+
+    <div class="sec-head">
+      <div class="sec-icon">⚙️</div>
+      <div class="sec-title">어떤 일을 했나요?</div>
+    </div>
+
+    <div class="notice">📌 아래 카드들을 나의 실제 업무 내용으로 바꿔주세요!</div>
+
+    <ul class="two-col-list">
+      <li>
+        <div class="mini-card-icon">📋</div>
+        <div class="mini-card-title"><strong>주요 업무 1</strong></div>
+        <div class="mini-card-desc">여기에 담당했던 업무를 적어주세요. 어떤 역할이었는지, 어떤 것들을 배웠는지 등을 기록해요.</div>
+      </li>
+      <li>
+        <div class="mini-card-icon">💡</div>
+        <div class="mini-card-title"><strong>주요 업무 2</strong></div>
+        <div class="mini-card-desc">또 다른 업무가 있었다면 여기에! 프로젝트나 팀 협업 경험도 좋아요.</div>
+      </li>
+      <li>
+        <div class="mini-card-icon">🤝</div>
+        <div class="mini-card-title"><strong>팀/동료 이야기</strong></div>
+        <div class="mini-card-desc">함께 일했던 팀이나 동료들에 대한 따뜻한 기억들을 적어보세요.</div>
+      </li>
+      <li>
+        <div class="mini-card-icon">🏆</div>
+        <div class="mini-card-title"><strong>가장 기억에 남는 순간</strong></div>
+        <div class="mini-card-desc">회사 생활 중 가장 뿌듯했거나 잊지 못할 순간을 담아보세요!</div>
+      </li>
+    </ul>
+
+    <div class="sec-head">
+      <div class="sec-icon">📦</div>
+      <div class="sec-title">회사에서 가져온 것들</div>
+    </div>
+
+    <div class="diary-card">
+      <div class="diary-card-header">
+        <div class="diary-tag" style="background:#b8e8ff;">Skills &amp; Lessons</div>
+      </div>
+      <div class="diary-card-body">
+        <p>회사를 다니면서 단순한 업무 기술 외에도 정말 많은 것을 배웠어요.</p>
+        <p><strong>[ 여기에 배운 것들을 채워보세요! ]</strong><br>
+        사회생활, 커뮤니케이션, 전문 기술, 마음가짐 등 어떤 것이든 좋아요.</p>
+      </div>
+    </div>
+
+    <div class="chip-row">
+      <div class="chip" style="background:#a8f0d8;">📌 스킬 1 입력</div>
+      <div class="chip" style="background:#fff9c4;">📌 스킬 2 입력</div>
+      <div class="chip" style="background:#e8d8ff;">🗣️ 커뮤니케이션</div>
+      <div class="chip" style="background:#ffcce0;">⏰ 시간 관리</div>
+      <div class="chip" style="background:#ffd6c0;">💪 책임감</div>
+      <div class="chip" style="background:#b8e8ff;">🌱 성장</div>
+    </div>
+
+    <div class="sec-head">
+      <div class="sec-icon">🎓</div>
+      <div class="sec-title">그래서, 왜 대학교로 왔나요?</div>
+    </div>
+
+    <div class="diary-card">
+      <div class="diary-card-header">
+        <div class="diary-tag" style="background:#ffd6c0;">전환점</div>
+      </div>
+      <div class="diary-card-body">
+        <p><strong>[ 퇴사 혹은 대학 진학을 결심한 이야기를 적어주세요! ]</strong><br>
+        어떤 계기로 다시 공부하기로 결심했는지, 그 결정이 쉽지 않았다면 어떤 고민을 했는지도 솔직하게 담아보세요 📝</p>
+        <p>직장인으로서의 나 VS 학생으로서의 나, 어떻게 달라졌는지도 재미있는 이야기가 될 것 같아요!</p>
+      </div>
+    </div>
+
+    <div class="sec-head">
+      <div class="sec-icon">📅</div>
+      <div class="sec-title">회사 생활 타임라인</div>
+    </div>
+
+    <div class="notice">📌 아래 내용은 예시예요! 실제 날짜와 이야기로 바꿔주세요.</div>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-box">
+          <div class="tl-date">○○년 ○월</div>
+          <div class="tl-title">입사 첫 날</div>
+          <div class="tl-desc">두근두근했던 첫 출근. 새 사원증을 받았을 때의 그 설렘을 여기에 적어보세요!</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-box">
+          <div class="tl-date">○○년 ○월</div>
+          <div class="tl-title">가장 기억에 남는 프로젝트</div>
+          <div class="tl-desc">열심히 했던 프로젝트나 업무 이야기를 담아보세요. 성공이든 실패든 소중한 경험이에요!</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-box">
+          <div class="tl-date">○○년 ○월</div>
+          <div class="tl-title">퇴사 &amp; 새 출발</div>
+          <div class="tl-desc">새로운 도전을 위해 회사를 떠나던 날의 이야기. 복잡한 감정들을 여기에 담아보세요 🌱</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-box">
+          <div class="tl-date">현재 ✨</div>
+          <div class="tl-title">대학생 = 나</div>
+          <div class="tl-desc">그 경험이 지금의 대학 생활에 어떤 영향을 미치고 있는지 적어보세요!</div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <footer class="c_12">
+    ✨ 나만의 이야기를 담은 공간 ✨<br>
+    <span style="font-size:0.8em;">내용을 채워가는 중이에요 🌱</span>
+  </footer>
+
+</body>
+</html>

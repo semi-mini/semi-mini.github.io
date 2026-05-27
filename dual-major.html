@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📚 복수전공 이야기 | 나의 작은 세계</title>
+<link href="https://fonts.googleapis.com/css2?family=Galmuri11&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+ul { list-style-type: none; }
+body {
+    font-family: 'Galmuri11', "맑은 고딕", monospace;
+    font-size: 100%;
+    background-color: #ddf4ff;
+}
+[class*="c_"] { float: left; padding: 10px; }
+[class*="c_"] { width: 100%; }
+@media only screen and (min-width: 600px) {
+    .c_m_3{width:25%;} .c_m_9{width:75%;} .c_m_12{width:100%;}
+}
+@media only screen and (min-width: 768px) {
+    .c_3{width:25%;} .c_6{width:50%;} .c_9{width:75%;} .c_12{width:100%;}
+}
+
+header {
+    height: 80px; padding: 20px;
+    background-color: #fff9c4;
+    border-bottom: 3px solid #3d2b1f;
+    box-shadow: 0 3px 0 #3d2b1f;
+}
+header h1 { font-size: 1.1em; color: #3d2b1f; }
+
+aside#menu { color: #ffffff; }
+aside#menu li {
+    padding: 10px; margin: 5px 0 0 0;
+    background-color: #ff6b9d;
+    border: 2px solid #3d2b1f;
+    box-shadow: 3px 3px 0 #3d2b1f;
+    font-size: 0.9em; cursor: pointer;
+    transition: transform 0.1s, box-shadow 0.1s;
+}
+aside#menu li:hover {
+  transform: translate(-1px,-1px);
+  box-shadow: 4px 4px 0 #3d2b1f;
+  background-color: #ff9ec8; }
+aside#menu li a { 
+  color: #ffffff; 
+  text-decoration: none; 
+  display: block; }
+
+section#main { padding: 15px; }
+section#main h1 { font-size: 1.1em; color: #3d2b1f; margin-bottom: 10px; text-shadow: 2px 2px 0 #c9a882; }
+section#main p { padding: 5px; font-size: 0.9em; line-height: 150%; color: #3d2b1f; }
+
+.speech-bubble {
+    background: #ffffff; border: 3px solid #3d2b1f; box-shadow: 4px 4px 0 #3d2b1f;
+    padding: 12px 16px; position: relative;
+    font-size: 0.88em; color: #3d2b1f; line-height: 1.8; margin-bottom: 16px;
+}
+.speech-bubble::before { content:''; position:absolute; bottom:-16px; left:24px; border:7px solid transparent; border-top-color:#3d2b1f; }
+.speech-bubble::after  { content:''; position:absolute; bottom:-10px; left:25px; border:6px solid transparent; border-top-color:#ffffff; }
+
+.sec-head { display:flex; align-items:center; gap:8px; margin:20px 0 10px; }
+.sec-icon {
+    width:28px; height:28px; background:#fff9c4; border:2px solid #3d2b1f;
+    box-shadow:2px 2px 0 #3d2b1f; display:flex; align-items:center; justify-content:center; font-size:13px;
+}
+.sec-title { font-size:0.95em; color:#3d2b1f; text-shadow:2px 2px 0 #c9a882; }
+
+.diary-card { background:#ffffff; border:3px solid #3d2b1f; box-shadow:4px 4px 0 #3d2b1f; margin-bottom:16px; overflow:hidden; }
+.diary-card-header { padding:10px 14px; border-bottom:2px solid #3d2b1f; display:flex; align-items:center; gap:8px; }
+.diary-tag { padding:3px 8px; border:2px solid #3d2b1f; font-size:0.75em; }
+.diary-card-body { padding:14px; }
+.diary-card-body p { font-size:0.82em; color:#8b5e3c; line-height:1.9; margin-bottom:10px; }
+.diary-card-body p:last-child { margin-bottom:0; }
+strong { color:#3d2b1f; }
+
+.notice {
+    background:#fff9c4; border:3px solid #3d2b1f; box-shadow:3px 3px 0 #3d2b1f;
+    padding:12px 14px; margin-bottom:14px; font-size:0.82em; color:#8b5e3c; line-height:1.8;
+}
+
+.timeline { position:relative; padding-left:28px; }
+.timeline::before { content:''; position:absolute; left:10px; top:0; bottom:0; width:3px; background:repeating-linear-gradient(180deg,#3d2b1f 0,#3d2b1f 6px,transparent 6px,transparent 10px); }
+.tl-item { position:relative; margin-bottom:16px; }
+.tl-item::before { content:'◆'; position:absolute; left:-24px; top:14px; font-size:9px; color:#3d2b1f; }
+.tl-box { background:#ffffff; border:2px solid #3d2b1f; box-shadow:3px 3px 0 #3d2b1f; padding:12px 14px; }
+.tl-date  { font-size:0.75em; color:#8b5e3c; margin-bottom:4px; }
+.tl-title { font-size:0.88em; margin-bottom:6px; }
+.tl-desc  { font-size:0.78em; color:#8b5e3c; line-height:1.8; }
+
+.chip-row { display:flex; gap:6px; flex-wrap:wrap; margin:10px 0; }
+.chip { padding:4px 10px; border:2px solid #3d2b1f; font-size:0.78em; box-shadow:2px 2px 0 #3d2b1f; }
+
+footer {
+    height:60px; padding:10px; clear:both; text-align:center;
+    background-color:#fffaf0; border-top:3px solid #3d2b1f; font-size:0.85em; color:#5c3d2e;
+}
+</style>
+</head>
+<body>
+
+  <header class="c_12">
+    <h1>📚 복수전공 이야기 | 나의 작은 세계</h1>
+  </header>
+
+  <aside id="menu" class="c_m_3 c_3">
+    <ul>
+      <li><a href="index.html">🌟 시작 화면</a></li>
+      <li><a href="work.html">💼 이전 회사</a></li>
+      <li><a href="travel.html">✈️ 여행</a></li>
+      <li><a href="dual-major.html">📚 복수전공</a></li>
+      <li><a href="future.html">🌈 앞으로의 꿈</a></li>
+      <li><a href="game-dev.html">🎮 게임 개발</a></li>
+    </ul>
+  </aside>
+
+  <section id="main" class="c_m_9 c_9">
+
+    <h1>복수전공 도전기</h1>
+    <p>두 개의 전공을 선택한 이유와 그 과정에서 느낀 것들을 기록해요 ✏️</p>
+
+    <div class="speech-bubble">
+      안녕하세요! 저는 현재 대학교에서 <strong>복수전공</strong>을 하고 있어요.<br>
+      처음엔 힘들었지만 지금은 정말 잘한 선택이라고 생각해요 🌸<br>
+      이 페이지에서는 그 이야기를 솔직하게 적을 거예요!
+    </div>
+
+    <div class="sec-head">
+      <div class="sec-icon">❓</div>
+      <div class="sec-title">왜 복수전공을 시작했나요?</div>
+    </div>
+
+    <div class="diary-card">
+      <div class="diary-card-header">
+        <div class="diary-tag" style="background:#fff9c4;">나의 이야기</div>
+        <span style="font-size:0.8em;"> 법학과 복수전공 ✏️</span>
+      </div>
+      <div class="diary-card-body">
+        <p>
+          <strong>[ 🎓 ]</strong><br>
+        </p>
+        <p>
+          어떤 계기로 복수전공을 결심하게 됐는지, 주변의 반응은 어땠는지,<br>
+          처음 신청하러 가던 날의 긴장감 같은 것들 적기
+        </p>
+      </div>
+    </div>
+
+    <div class="sec-head">
+      <div class="sec-icon">📅</div>
+      <div class="sec-title">나의 복수전공 타임라인</div>
+    </div>
+
+    <div class="notice">📌 타임라인 </div>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-box">
+          <div class="tl-date">○○년 ○월</div>
+          <div class="tl-title">복수전공 신청</div>
+          <div class="tl-desc">처음으로 복수전공 신청서를 제출, 그때의 감정</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-box">
+          <div class="tl-date">○○년 ○월</div>
+          <div class="tl-title">첫 번째 수업</div>
+          <div class="tl-desc">새로운 전공의 첫 수업! 아는 사람 하나 없고 낯선 내용들 투성이</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-box">
+          <div class="tl-date">○○년 ○월</div>
+          <div class="tl-title">처음으로 힘들었던 시기</div>
+          <div class="tl-desc">두 개의 전공을 병행하면서 정말 바빴던 시기. 포기하고 싶었지만 포기하지 못한 이유</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-box">
+          <div class="tl-date">현재 진행 중 ✨</div>
+          <div class="tl-title">계속되는 도전</div>
+          <div class="tl-desc">진행 중,새로운 이야기가 생기면 계속 업데이트할 거예요 🌱</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec-head">
+      <div class="sec-icon">💡</div>
+      <div class="sec-title">복수전공을 하면서 배운 것들</div>
+    </div>
+
+    <div class="diary-card">
+      <div class="diary-card-header">
+        <div class="diary-tag" style="background:#a8f0d8;">Skill &amp; Growth</div>
+      </div>
+      <div class="diary-card-body">
+        <p>두 전공을 공부하면서 예상치 못했던 것들.</p>
+        <p><strong>[ 복수전공을 할거라면 계절학기를 적극 이용해야하는구나 ]</strong><br></p>
+      </div>
+    </div>
+
+    <div class="chip-row">
+      <div class="chip" style="background:#fff9c4;">📖 컴퓨터공학전공</div>
+      <div class="chip" style="background:#a8f0d8;">📖 법학과(복전)</div>
+      <div class="chip" style="background:#e8d8ff;">⏰ 시간 관리는 망했지만</div>
+      <div class="chip" style="background:#ffcce0;">💪 이동하며 운동되는 기분</div>
+      <div class="chip" style="background:#ffd6c0;">🤝 아는사람 하나없는</div>
+      <div class="chip" style="background:#b8e8ff;">✨ 그럼에도 재미있는</div>
+    </div>
+
+    <div class="sec-head">
+      <div class="sec-icon">💬</div>
+      <div class="sec-title">솔직한 후기</div>
+    </div>
+
+    <div class="diary-card">
+      <div class="diary-card-header">
+        <div class="diary-tag" style="background:#ffcce0;">솔직 담백</div>
+      </div>
+      <div class="diary-card-body">
+        <p><strong>힘들었던 점 😓</strong><br>
+        [ 나는 2학년이지만 전공필수과목에 한하여 본전공이 아니라는 이유로? 우선순위에서 밀린다... 
+        그말은 빌넣을 하거나 계절학기를 듣거나 운이 아주 좋아야한다. 근데? 늦잠을 자서 2-1은 놓쳤다...  ]</p>
+        <p><strong>좋았던 점 🌸</strong><br>
+        [ 알아두면 쓸모 많은 법학과, 상식이 추가되는 만족감 ]</p>
+        <p><strong>복수전공을 고민하는 분들께 💌</strong><br>
+        [  적극추천!! ]</p>
+      </div>
+    </div>
+
+  </section>
+
+  <footer class="c_12">
+    ✨ 나만의 이야기를 담은 공간 ✨<br>
+    <span style="font-size:0.8em;">내용을 채워가는 중이에요 🌱</span>
+  </footer>
+
+</body>
+</html>

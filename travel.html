@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>✈️ 대학 여행 이야기 | 나의 작은 세계</title>
+<link href="https://fonts.googleapis.com/css2?family=Galmuri11&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+ul { list-style-type: none; }
+body {
+    font-family: 'Galmuri11', "맑은 고딕", monospace;
+    font-size: 100%;
+    background-color: #ddf4ff;
+}
+[class*="c_"] { float: left; padding: 10px; }
+[class*="c_"] { width: 100%; }
+@media only screen and (min-width: 600px) {
+    .c_m_3{width:25%;} .c_m_9{width:75%;} .c_m_12{width:100%;}
+}
+@media only screen and (min-width: 768px) {
+    .c_3{width:25%;} .c_9{width:75%;} .c_12{width:100%;}
+}
+
+header {
+    height: 80px; padding: 20px;
+    background-color: #e8d8ff;
+    border-bottom: 3px solid #3d2b1f;
+    box-shadow: 0 3px 0 #3d2b1f;
+}
+header h1 { font-size: 1.1em; color: #3d2b1f; }
+
+aside#menu { color: #ffffff; }
+aside#menu li {
+    padding: 10px; margin: 5px 0 0 0;
+    background-color: #ff6b9d;
+    border: 2px solid #3d2b1f;
+    box-shadow: 3px 3px 0 #3d2b1f;
+    font-size: 0.9em; cursor: pointer;
+    transition: transform 0.1s, box-shadow 0.1s;
+}
+aside#menu li:hover { transform: translate(-1px,-1px); box-shadow: 4px 4px 0 #3d2b1f; background-color: #ff9ec8; }
+aside#menu li a { color: #ffffff; text-decoration: none; display: block; }
+
+section#main { padding: 15px; }
+section#main h1 { font-size: 1.1em; color: #3d2b1f; margin-bottom: 10px; text-shadow: 2px 2px 0 #c9a882; }
+section#main p { padding: 5px; font-size: 0.9em; line-height: 150%; color: #3d2b1f; }
+
+.speech-bubble {
+    background: #ffffff; border: 3px solid #3d2b1f; box-shadow: 4px 4px 0 #3d2b1f;
+    padding: 12px 16px; position: relative;
+    font-size: 0.88em; color: #3d2b1f; line-height: 1.8; margin-bottom: 16px;
+}
+.speech-bubble::before { content:''; position:absolute; bottom:-16px; left:24px; border:7px solid transparent; border-top-color:#3d2b1f; }
+.speech-bubble::after  { content:''; position:absolute; bottom:-10px; left:25px; border:6px solid transparent; border-top-color:#ffffff; }
+
+.sec-head { display:flex; align-items:center; gap:8px; margin:20px 0 10px; }
+.sec-icon {
+    width:28px; height:28px; background:#e8d8ff; border:2px solid #3d2b1f;
+    box-shadow:2px 2px 0 #3d2b1f; display:flex; align-items:center; justify-content:center; font-size:13px;
+}
+.sec-title { font-size:0.95em; color:#3d2b1f; text-shadow:2px 2px 0 #c9a882; }
+
+.diary-card { background:#ffffff; border:3px solid #3d2b1f; box-shadow:4px 4px 0 #3d2b1f; margin-bottom:16px; overflow:hidden; }
+.diary-card-header { padding:10px 14px; border-bottom:2px solid #3d2b1f; display:flex; align-items:center; gap:8px; }
+.diary-tag { padding:3px 8px; border:2px solid #3d2b1f; font-size:0.75em; }
+.diary-card-body { padding:14px; }
+.diary-card-body p { font-size:0.82em; color:#8b5e3c; line-height:1.9; margin-bottom:10px; }
+.diary-card-body p:last-child { margin-bottom:0; }
+strong { color:#3d2b1f; }
+
+.notice {
+    background:#e8d8ff; border:3px solid #3d2b1f; box-shadow:3px 3px 0 #3d2b1f;
+    padding:12px 14px; margin-bottom:14px; font-size:0.82em; color:#5c3d2e; line-height:1.8;
+}
+
+.stamp-row { display:flex; gap:8px; flex-wrap:wrap; margin:10px 0; }
+.stamp {
+    width:56px; height:56px; border:3px solid #3d2b1f; box-shadow:3px 3px 0 #3d2b1f;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    font-size:18px; gap:2px; background:#ffffff;
+}
+.stamp-label { font-size:0.6em; color:#8b5e3c; }
+
+.travel-list li {
+    margin: 8px 0;
+    border: 2px solid #3d2b1f;
+    box-shadow: 3px 3px 0 #3d2b1f;
+    background: #ffffff;
+    overflow: hidden;
+}
+.travel-thumb {
+    height: 50px; display:flex; align-items:center; justify-content:center;
+    font-size: 24px; border-bottom: 2px solid #3d2b1f;
+}
+.travel-info { padding: 10px 12px; }
+.travel-place { font-size:0.88em; margin-bottom:3px; }
+.travel-date  { font-size:0.75em; color:#8b5e3c; margin-bottom:4px; }
+.travel-memo  { font-size:0.78em; color:#8b5e3c; line-height:1.7; }
+
+.chip-row { display:flex; gap:6px; flex-wrap:wrap; margin:10px 0; }
+.chip { padding:4px 10px; border:2px solid #3d2b1f; font-size:0.78em; box-shadow:2px 2px 0 #3d2b1f; }
+
+footer {
+    height:60px; padding:10px; clear:both; text-align:center;
+    background-color:#fffaf0; border-top:3px solid #3d2b1f; font-size:0.85em; color:#5c3d2e;
+}
+</style>
+</head>
+<body>
+
+  <header class="c_12">
+    <h1>✈️ 대학 여행 이야기 | 나의 작은 세계</h1>
+  </header>
+
+  <aside id="menu" class="c_m_3 c_3">
+    <ul>
+      <li><a href="index.html">🌟 시작 화면</a></li>
+      <li><a href="work.html">💼 이전 회사</a></li>
+      <li><a href="travel.html">✈️ 여행</a></li>
+      <li><a href="dual-major.html">📚 복수전공</a></li>
+      <li><a href="future.html">🌈 앞으로의 꿈</a></li>
+      <li><a href="game-dev.html">🎮 게임 개발</a></li>
+    </ul>
+  </aside>
+
+  <section id="main" class="c_m_9 c_9">
+
+    <h1>대학 여행 이야기</h1>
+    <p>대학을 다니면서 떠났던 여행들, 설레고 따뜻했던 기억들을 기록해요 🗺️</p>
+
+    <div class="speech-bubble">
+      대학생이 되고 나서 여행을 많이 다니게 됐어요 ✈️<br>
+      새로운 곳에서 새로운 것들을 경험하는 게 정말 좋더라고요!<br>
+      그 소중한 순간들을 여기에 모아두려고 해요 🌸
+    </div>
+
+    <div class="sec-head">
+      <div class="sec-icon">🗺️</div>
+      <div class="sec-title">내가 다녀온 곳들</div>
+    </div>
+
+    <div class="notice">📌 아래 도장들을 실제로 다녀온 여행지로 바꿔주세요!</div>
+
+    <div class="stamp-row">
+      <div class="stamp">🏙️<div class="stamp-label">여행지 1</div></div>
+      <div class="stamp">🗻<div class="stamp-label">여행지 2</div></div>
+      <div class="stamp">🏖️<div class="stamp-label">여행지 3</div></div>
+      <div class="stamp">🌃<div class="stamp-label">여행지 4</div></div>
+      <div class="stamp">🌄<div class="stamp-label">여행지 5</div></div>
+      <div class="stamp" style="opacity:0.4;">＋<div class="stamp-label">예정</div></div>
+    </div>
+
+    <div class="sec-head">
+      <div class="sec-icon">📸</div>
+      <div class="sec-title">여행 기록</div>
+    </div>
+
+    <ul class="travel-list">
+      <li>
+        <div class="travel-thumb" style="background:linear-gradient(135deg,#fff9c4,#ffd6c0);">🏙️</div>
+        <div class="travel-info">
+          <div class="travel-place"><strong>여행지 이름 입력</strong></div>
+          <div class="travel-date">○○년 ○월 ○일 ~ ○일</div>
+          <div class="travel-memo">이 여행에서 있었던 특별한 이야기나 가장 기억에 남는 순간을 적어주세요!</div>
+        </div>
+      </li>
+      <li>
+        <div class="travel-thumb" style="background:linear-gradient(135deg,#a8f0d8,#b8e8ff);">🌊</div>
+        <div class="travel-info">
+          <div class="travel-place"><strong>여행지 이름 입력</strong></div>
+          <div class="travel-date">○○년 ○월 ○일 ~ ○일</div>
+          <div class="travel-memo">처음 가본 곳이었나요? 아니면 여러 번 간 곳인가요? 그곳만의 매력을 담아보세요!</div>
+        </div>
+      </li>
+      <li>
+        <div class="travel-thumb" style="background:linear-gradient(135deg,#e8d8ff,#ffcce0);">🗻</div>
+        <div class="travel-info">
+          <div class="travel-place"><strong>여행지 이름 입력</strong></div>
+          <div class="travel-date">○○년 ○월 ○일 ~ ○일</div>
+          <div class="travel-memo">함께 간 사람이 있었나요? 혼자였나요? 그때의 감정과 분위기를 기록해요!</div>
+        </div>
+      </li>
+      <li style="opacity:0.5;">
+        <div class="travel-thumb" style="background:#fffaf0;">＋</div>
+        <div class="travel-info">
+          <div class="travel-place"><strong>다음 여행지</strong></div>
+          <div class="travel-date">계획 중 🌱</div>
+          <div class="travel-memo">다음에는 어디로 떠나고 싶으신가요? 가고 싶은 곳을 미리 적어두세요!</div>
+        </div>
+      </li>
+    </ul>
+
+    <div class="sec-head">
+      <div class="sec-icon">💌</div>
+      <div class="sec-title">여행이 내게 준 것들</div>
+    </div>
+
+    <div class="diary-card">
+      <div class="diary-card-header">
+        <div class="diary-tag" style="background:#e8d8ff;">Travel Diary</div>
+      </div>
+      <div class="diary-card-body">
+        <p><strong>[ 여행을 통해 느끼고 배운 것들을 적어주세요! ]</strong><br>
+        새로운 문화, 낯선 환경에서의 성장, 여행 중 만난 사람들, 맛있었던 음식들... 어떤 이야기든 좋아요 🌸</p>
+        <p>여행은 제게 <strong>[ ]</strong> 을 가르쳐 주었어요. 이 빈칸을 채워보세요!</p>
+      </div>
+    </div>
+
+    <div class="chip-row">
+      <div class="chip" style="background:#e8d8ff;">🌍 견문을 넓히기</div>
+      <div class="chip" style="background:#b8e8ff;">🤸 혼자도 괜찮아</div>
+      <div class="chip" style="background:#fff9c4;">🍜 맛있는 것들</div>
+      <div class="chip" style="background:#ffcce0;">📷 순간을 담기</div>
+      <div class="chip" style="background:#a8f0d8;">💫 새로운 나</div>
+    </div>
+
+    <div class="sec-head">
+      <div class="sec-icon">🌟</div>
+      <div class="sec-title">앞으로 가고 싶은 곳들</div>
+    </div>
+
+    <div class="diary-card">
+      <div class="diary-card-header">
+        <div class="diary-tag" style="background:#ffd6c0;">버킷리스트</div>
+      </div>
+      <div class="diary-card-body">
+        <p>
+          언젠가 꼭 가보고 싶은 곳들을 적어두는 공간이에요!<br>
+          <strong>[ 나만의 여행 버킷리스트를 채워주세요 ✏️ ]</strong>
+        </p>
+        <p>예) 꼭 가고 싶은 나라나 도시, 그곳에서 하고 싶은 것, 함께 가고 싶은 사람 등을 자유롭게 적어보세요!</p>
+      </div>
+    </div>
+
+  </section>
+
+  <footer class="c_12">
+    ✨ 나만의 이야기를 담은 공간 ✨<br>
+    <span style="font-size:0.8em;">내용을 채워가는 중이에요 🌱</span>
+  </footer>
+
+</body>
+</html>

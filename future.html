@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🌈 앞으로의 꿈 | 나의 작은 세계</title>
+<link href="https://fonts.googleapis.com/css2?family=Galmuri11&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+ul { list-style-type: none; }
+body {
+    font-family: 'Galmuri11', "맑은 고딕", monospace;
+    font-size: 100%;
+    background-color: #ddf4ff;
+}
+[class*="c_"] { float: left; padding: 10px; }
+[class*="c_"] { width: 100%; }
+@media only screen and (min-width: 600px) {
+    .c_m_3{width:25%;} .c_m_9{width:75%;} .c_m_12{width:100%;}
+}
+@media only screen and (min-width: 768px) {
+    .c_3{width:25%;} .c_9{width:75%;} .c_12{width:100%;}
+}
+
+header {
+    height: 80px; padding: 20px;
+    background-color: #ffe066;
+    border-bottom: 3px solid #3d2b1f;
+    box-shadow: 0 3px 0 #3d2b1f;
+}
+header h1 { font-size: 1.1em; color: #3d2b1f; }
+
+aside#menu { color: #ffffff; }
+aside#menu li {
+    padding: 10px; margin: 5px 0 0 0;
+    background-color: #ff6b9d;
+    border: 2px solid #3d2b1f;
+    box-shadow: 3px 3px 0 #3d2b1f;
+    font-size: 0.9em; cursor: pointer;
+    transition: transform 0.1s, box-shadow 0.1s;
+}
+aside#menu li:hover { transform: translate(-1px,-1px); box-shadow: 4px 4px 0 #3d2b1f; background-color: #ff9ec8; }
+aside#menu li a { color: #ffffff; text-decoration: none; display: block; }
+
+section#main { padding: 15px; }
+section#main h1 { font-size: 1.1em; color: #3d2b1f; margin-bottom: 10px; text-shadow: 2px 2px 0 #c9a882; }
+section#main p { padding: 5px; font-size: 0.9em; line-height: 150%; color: #3d2b1f; }
+
+.speech-bubble {
+    background: #ffffff; border: 3px solid #3d2b1f; box-shadow: 4px 4px 0 #3d2b1f;
+    padding: 12px 16px; position: relative;
+    font-size: 0.88em; color: #3d2b1f; line-height: 1.8; margin-bottom: 16px;
+}
+.speech-bubble::before { content:''; position:absolute; bottom:-16px; left:24px; border:7px solid transparent; border-top-color:#3d2b1f; }
+.speech-bubble::after  { content:''; position:absolute; bottom:-10px; left:25px; border:6px solid transparent; border-top-color:#ffffff; }
+
+.sec-head { display:flex; align-items:center; gap:8px; margin:20px 0 10px; }
+.sec-icon {
+    width:28px; height:28px; background:#ffe066; border:2px solid #3d2b1f;
+    box-shadow:2px 2px 0 #3d2b1f; display:flex; align-items:center; justify-content:center; font-size:13px;
+}
+.sec-title { font-size:0.95em; color:#3d2b1f; text-shadow:2px 2px 0 #c9a882; }
+
+.diary-card { background:#ffffff; border:3px solid #3d2b1f; box-shadow:4px 4px 0 #3d2b1f; margin-bottom:16px; overflow:hidden; }
+.diary-card-header { padding:10px 14px; border-bottom:2px solid #3d2b1f; display:flex; align-items:center; gap:8px; }
+.diary-tag { padding:3px 8px; border:2px solid #3d2b1f; font-size:0.75em; }
+.diary-card-body { padding:14px; }
+.diary-card-body p { font-size:0.82em; color:#8b5e3c; line-height:1.9; margin-bottom:10px; }
+.diary-card-body p:last-child { margin-bottom:0; }
+strong { color:#3d2b1f; }
+
+.notice {
+    background:#fff9c4; border:3px solid #3d2b1f; box-shadow:3px 3px 0 #3d2b1f;
+    padding:12px 14px; margin-bottom:14px; font-size:0.82em; color:#5c3d2e; line-height:1.8;
+}
+
+/* 꿈 리스트 */
+.dream-list li {
+    margin: 8px 0;
+    background: #ffffff;
+    border: 2px solid #3d2b1f;
+    box-shadow: 3px 3px 0 #3d2b1f;
+    padding: 12px 14px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+.dream-num {
+    width:28px; height:28px; background:#fff9c4; border:2px solid #3d2b1f;
+    display:flex; align-items:center; justify-content:center; font-size:0.82em; flex-shrink:0;
+}
+.dream-content { flex: 1; }
+.dream-title { font-size:0.88em; margin-bottom:4px; }
+.dream-desc   { font-size:0.78em; color:#8b5e3c; line-height:1.8; }
+.dream-status { display:inline-block; padding:2px 7px; border:2px solid #3d2b1f; font-size:0.72em; margin-top:4px; }
+
+/* 게이지 */
+.goal-row { margin-bottom:10px; }
+.goal-label { font-size:0.78em; color:#8b5e3c; margin-bottom:3px; display:flex; justify-content:space-between; }
+.goal-bar-wrap { height:14px; background:#fffaf0; border:2px solid #3d2b1f; }
+.goal-bar-fill { height:100%; background:#ffe066; border-right:2px solid #3d2b1f; transition:width 1s ease; }
+
+.chip-row { display:flex; gap:6px; flex-wrap:wrap; margin:10px 0; }
+.chip { padding:4px 10px; border:2px solid #3d2b1f; font-size:0.78em; box-shadow:2px 2px 0 #3d2b1f; }
+
+footer {
+    height:60px; padding:10px; clear:both; text-align:center;
+    background-color:#fffaf0; border-top:3px solid #3d2b1f; font-size:0.85em; color:#5c3d2e;
+}
+</style>
+</head>
+<body>
+
+  <header class="c_12">
+    <h1>🌈 앞으로의 꿈 | 나의 작은 세계</h1>
+  </header>
+
+  <aside id="menu" class="c_m_3 c_3">
+    <ul>
+      <li><a href="index.html">🌟 시작 화면</a></li>
+      <li><a href="work.html">💼 이전 회사</a></li>
+      <li><a href="travel.html">✈️ 여행</a></li>
+      <li><a href="dual-major.html">📚 복수전공</a></li>
+      <li><a href="future.html">🌈 앞으로의 꿈</a></li>
+      <li><a href="game-dev.html">🎮 게임 개발</a></li>
+    </ul>
+  </aside>
+
+  <section id="main" class="c_m_9 c_9">
+
+    <h1>앞으로의 꿈 이야기</h1>
+    <p>지금 이 순간에도 꿈꾸고 있는 것들, 앞으로 해나가고 싶은 것들을 기록해요 ⭐</p>
+
+    <div class="speech-bubble">
+      꿈은 꾸면 꿀수록 더 커진다고 생각해요 ⭐<br>
+      아직 이루지 못한 것들도 있지만, 하나씩 해나가고 있어요!<br>
+      이 페이지는 저의 꿈 창고예요 🌈
+    </div>
+
+    <div class="sec-head">
+      <div class="sec-icon">💭</div>
+      <div class="sec-title">지금 꿈꾸고 있는 것들</div>
+    </div>
+
+    <div class="notice">📌 아래 꿈 리스트를 나의 실제 꿈과 목표로 바꿔주세요!</div>
+
+    <ul class="dream-list">
+      <li>
+        <div class="dream-num">01</div>
+        <div class="dream-content">
+          <div class="dream-title"><strong>꿈/목표 1 입력</strong></div>
+          <div class="dream-desc">이 꿈을 갖게 된 이유, 어떻게 이루어나갈 건지 적어보세요. 언제까지 이루고 싶은지도!</div>
+          <div class="dream-status" style="background:#a8f0d8;">진행 중 🌱</div>
+        </div>
+      </li>
+      <li>
+        <div class="dream-num">02</div>
+        <div class="dream-content">
+          <div class="dream-title"><strong>꿈/목표 2 입력</strong></div>
+          <div class="dream-desc">두 번째 꿈을 여기에 적어주세요! 대학 졸업 후, 혹은 재학 중에 이루고 싶은 것들이에요.</div>
+          <div class="dream-status" style="background:#fff9c4;">계획 중 📝</div>
+        </div>
+      </li>
+      <li>
+        <div class="dream-num">03</div>
+        <div class="dream-content">
+          <div class="dream-title"><strong>꿈/목표 3 입력</strong></div>
+          <div class="dream-desc">세 번째 꿈! 아직 막연하더라도 괜찮아요. 마음속에 품고 있는 바람을 자유롭게 적어보세요.</div>
+          <div class="dream-status" style="background:#ffcce0;">언젠가 🌸</div>
+        </div>
+      </li>
+      <li>
+        <div class="dream-num">04</div>
+        <div class="dream-content">
+          <div class="dream-title"><strong>꿈/목표 4 입력</strong></div>
+          <div class="dream-desc">네 번째 꿈. 더 추가하고 싶다면 이 항목을 복사해서 늘려보세요!</div>
+          <div class="dream-status" style="background:#b8e8ff;">계획 중 💫</div>
+        </div>
+      </li>
+    </ul>
+
+    <div class="sec-head">
+      <div class="sec-icon">📊</div>
+      <div class="sec-title">목표 달성 게이지</div>
+    </div>
+
+    <div class="diary-card">
+      <div class="diary-card-header">
+        <div class="diary-tag" style="background:#fff9c4;">나의 현재 상태</div>
+      </div>
+      <div class="diary-card-body">
+        <div class="goal-row">
+          <div class="goal-label"><span>🎓 졸업 준비</span><span id="v1">0%</span></div>
+          <div class="goal-bar-wrap"><div class="goal-bar-fill" id="g1" style="width:0%;background:#a8f0d8;"></div></div>
+        </div>
+        <div class="goal-row">
+          <div class="goal-label"><span>📚 복수전공 이수</span><span id="v2">0%</span></div>
+          <div class="goal-bar-wrap"><div class="goal-bar-fill" id="g2" style="width:0%;background:#e8d8ff;"></div></div>
+        </div>
+        <div class="goal-row">
+          <div class="goal-label"><span>🎮 픽셀 게임 개발</span><span id="v3">0%</span></div>
+          <div class="goal-bar-wrap"><div class="goal-bar-fill" id="g3" style="width:0%;background:#ffcce0;"></div></div>
+        </div>
+        <div class="goal-row">
+          <div class="goal-label"><span>⭐ 나만의 꿈 목표</span><span id="v4">0%</span></div>
+          <div class="goal-bar-wrap"><div class="goal-bar-fill" id="g4" style="width:0%;background:#ffe066;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec-head">
+      <div class="sec-icon">💌</div>
+      <div class="sec-title">미래의 나에게 쓰는 편지</div>
+    </div>
+
+    <div class="diary-card">
+      <div class="diary-card-header">
+        <div class="diary-tag" style="background:#ffd6c0;">To. 미래의 나</div>
+      </div>
+      <div class="diary-card-body">
+        <p>
+          미래의 나에게,<br>
+          <strong>[ 여기에 편지를 써주세요! ]</strong>
+        </p>
+        <p>
+          지금 이 순간의 나는 어떤 마음인지, 앞으로의 너에게 해주고 싶은 말은 무엇인지,<br>
+          몇 년 후의 나는 어디서 무엇을 하고 있을 것 같은지...
+        </p>
+        <p>훗날 이 페이지를 다시 열었을 때 뭉클해질 수 있는 편지를 남겨보세요 💌</p>
+      </div>
+    </div>
+
+    <div class="sec-head">
+      <div class="sec-icon">🌸</div>
+      <div class="sec-title">꿈을 이루기 위해 하고 있는 것들</div>
+    </div>
+
+    <div class="chip-row">
+      <div class="chip" style="background:#fff9c4;">📚 열심히 공부</div>
+      <div class="chip" style="background:#a8f0d8;">💻 코딩 공부</div>
+      <div class="chip" style="background:#e8d8ff;">🎮 게임 개발 준비</div>
+      <div class="chip" style="background:#ffcce0;">✏️ 기록하기</div>
+      <div class="chip" style="background:#ffd6c0;">🌱 매일 성장</div>
+      <div class="chip" style="background:#b8e8ff;">⭐ 꿈 잃지 않기</div>
+    </div>
+
+  </section>
+
+  <footer class="c_12">
+    ✨ 나만의 이야기를 담은 공간 ✨<br>
+    <span style="font-size:0.8em;">내용을 채워가는 중이에요 🌱</span>
+  </footer>
+
+<script>
+const goals = [
+  {id:'g1',valId:'v1',target:60},
+  {id:'g2',valId:'v2',target:45},
+  {id:'g3',valId:'v3',target:20},
+  {id:'g4',valId:'v4',target:35},
+];
+setTimeout(() => {
+  goals.forEach(g => {
+    document.getElementById(g.id).style.width = g.target+'%';
+    document.getElementById(g.valId).textContent = g.target+'%';
+  });
+}, 600);
+</script>
+</body>
+</html>
