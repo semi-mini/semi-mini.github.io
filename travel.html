@@ -22,15 +22,85 @@ body {
     .c_3{width:25%;} .c_9{width:75%;} .c_12{width:100%;}
 }
 
+/* ===== 햄버거 메뉴 공통 ===== */
+#menu-toggle { display: none; }
+
+.nav-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    cursor: pointer;
+    position: absolute;
+    top: 24px;
+    right: 20px;
+    z-index: 1001;
+}
+.nav-hamburger span {
+    width: 24px;
+    height: 3px;
+    background: #3d2b1f;
+    border-radius: 2px;
+}
+
+.nav-mobile-menu {
+    display: none;
+    position: fixed;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background: #e8d8ff;
+    border-top: 3px solid #3d2b1f;
+    box-shadow: 0 4px 0 #3d2b1f;
+    padding: 12px;
+    z-index: 999;
+}
+.nav-mobile-menu a {
+    display: block;
+    padding: 12px 14px;
+    margin-bottom: 8px;
+    background: #fffaf0;
+    color: #3d2b1f;
+    text-decoration: none;
+    border: 2px solid #3d2b1f;
+    box-shadow: 2px 2px 0 #3d2b1f;
+    transition: transform .1s, box-shadow .1s, background .1s;
+}
+.nav-mobile-menu a:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 4px 4px 0 #3d2b1f;
+    background: #fff9c4;
+}
+#menu-toggle:checked ~ .nav-mobile-menu { display: block; }
+
+@media only screen and (max-width: 768px) {
+    aside#menu { display: none; }
+    .nav-hamburger { display: flex; }
+    .c_m_9, .c_9 { width: 100%; }
+}
+@media only screen and (min-width: 769px) {
+    .nav-hamburger, .nav-mobile-menu { display: none !important; }
+    aside#menu { display: block; }
+}
+
+/* ===== 헤더 ===== */
 header {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
     height: 80px; padding: 20px;
     background-color: #e8d8ff;
     border-bottom: 3px solid #3d2b1f;
     box-shadow: 0 3px 0 #3d2b1f;
+    z-index: 1000;
 }
-header h1 { font-size: 1.1em; color: #3d2b1f; }
+header h1 {
+    font-size: 1.1em;
+    color: #3d2b1f;
+    display: flex;
+    align-items: center;
+}
 
-aside#menu { color: #ffffff; }
+aside#menu { color: #ffffff; margin-top: 90px; }
 aside#menu li {
     padding: 10px; margin: 5px 0 0 0;
     background-color: #ff6b9d;
@@ -42,7 +112,7 @@ aside#menu li {
 aside#menu li:hover { transform: translate(-1px,-1px); box-shadow: 4px 4px 0 #3d2b1f; background-color: #ff9ec8; }
 aside#menu li a { color: #ffffff; text-decoration: none; display: block; }
 
-section#main { padding: 15px; }
+section#main { padding: 15px; margin-top: 90px; }
 section#main h1 { font-size: 1.1em; color: #3d2b1f; margin-bottom: 10px; text-shadow: 2px 2px 0 #c9a882; }
 section#main p { padding: 5px; font-size: 0.9em; line-height: 150%; color: #3d2b1f; }
 
@@ -110,7 +180,23 @@ footer {
 <body>
 
   <header class="c_12">
-    <h1>✈️ 대학 여행 이야기 | 나의 작은 세계</h1>
+    <h1>
+      <a href="index.html"><img src="logo.png" width="80px"></a>
+      <span style="margin-left:10px;">✈️ 대학 여행 이야기 | 나의 작은 세계</span>
+    </h1>
+
+    <input type="checkbox" id="menu-toggle">
+    <label for="menu-toggle" class="nav-hamburger">
+      <span></span><span></span><span></span>
+    </label>
+    <div class="nav-mobile-menu">
+      <a href="index.html">🌟 시작 화면</a>
+      <a href="work.html">💼 이전 회사</a>
+      <a href="travel.html">✈️ 여행</a>
+      <a href="dual-major.html">📚 복수전공</a>
+      <a href="future.html">🌈 앞으로의 꿈</a>
+      <a href="game-dev.html">🎮 게임 개발</a>
+    </div>
   </header>
 
   <aside id="menu" class="c_m_3 c_3">

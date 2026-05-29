@@ -22,15 +22,85 @@ body {
     .c_3{width:25%;} .c_9{width:75%;} .c_12{width:100%;}
 }
 
+/* ===== 햄버거 메뉴 공통 ===== */
+#menu-toggle { display: none; }
+
+.nav-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    cursor: pointer;
+    position: absolute;
+    top: 24px;
+    right: 20px;
+    z-index: 1001;
+}
+.nav-hamburger span {
+    width: 24px;
+    height: 3px;
+    background: #3d2b1f;
+    border-radius: 2px;
+}
+
+.nav-mobile-menu {
+    display: none;
+    position: fixed;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background: #ffcce0;
+    border-top: 3px solid #3d2b1f;
+    box-shadow: 0 4px 0 #3d2b1f;
+    padding: 12px;
+    z-index: 999;
+}
+.nav-mobile-menu a {
+    display: block;
+    padding: 12px 14px;
+    margin-bottom: 8px;
+    background: #fffaf0;
+    color: #3d2b1f;
+    text-decoration: none;
+    border: 2px solid #3d2b1f;
+    box-shadow: 2px 2px 0 #3d2b1f;
+    transition: transform .1s, box-shadow .1s, background .1s;
+}
+.nav-mobile-menu a:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 4px 4px 0 #3d2b1f;
+    background: #fff9c4;
+}
+#menu-toggle:checked ~ .nav-mobile-menu { display: block; }
+
+@media only screen and (max-width: 768px) {
+    aside#menu { display: none; }
+    .nav-hamburger { display: flex; }
+    .c_m_9, .c_9 { width: 100%; }
+}
+@media only screen and (min-width: 769px) {
+    .nav-hamburger, .nav-mobile-menu { display: none !important; }
+    aside#menu { display: block; }
+}
+/* ===== 헤더 ===== */
 header {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
     height: 80px; padding: 20px;
     background-color: #ffcce0;
     border-bottom: 3px solid #3d2b1f;
     box-shadow: 0 3px 0 #3d2b1f;
+    z-index: 1000;
 }
-header h1 { font-size: 1.1em; color: #3d2b1f; }
+header h1 {
+  font-size: 1.1em;
+  color: #3d2b1f;
+  display: flex;
+  align-items: center; }
 
-aside#menu { color: #ffffff; }
+.logo img { display: block; }
+
+aside#menu { color: #ffffff; margin-top: 90px; }
 aside#menu li {
     padding: 10px; margin: 5px 0 0 0;
     background-color: #ff6b9d;
@@ -42,7 +112,7 @@ aside#menu li {
 aside#menu li:hover { transform: translate(-1px,-1px); box-shadow: 4px 4px 0 #3d2b1f; background-color: #ff9ec8; }
 aside#menu li a { color: #ffffff; text-decoration: none; display: block; }
 
-section#main { padding: 15px; }
+section#main { padding: 15px; margin-top: 90px; }
 section#main h1 { font-size: 1.1em; color: #3d2b1f; margin-bottom: 10px; text-shadow: 2px 2px 0 #c9a882; }
 section#main p { padding: 5px; font-size: 0.9em; line-height: 150%; color: #3d2b1f; }
 
@@ -74,7 +144,6 @@ strong { color:#3d2b1f; }
     padding:12px 14px; margin-bottom:14px; font-size:0.82em; color:#5c3d2e; line-height:1.8;
 }
 
-/* 픽셀 캐릭터 */
 .pixel-canvas {
     background:#fffaf0; border:3px solid #3d2b1f; box-shadow:4px 4px 0 #3d2b1f;
     padding:14px; margin-bottom:16px; text-align:center;
@@ -91,7 +160,6 @@ strong { color:#3d2b1f; }
 @keyframes walk{0%,100%{transform:translateX(0)}25%{transform:translateX(2px)}75%{transform:translateX(-2px)}}
 .walk { animation:walk .4s steps(2) infinite; }
 
-/* 아이디어 리스트 */
 .idea-list li {
     margin: 8px 0;
     background: #ffffff;
@@ -106,7 +174,6 @@ strong { color:#3d2b1f; }
 .idea-title { font-size: 0.88em; margin-bottom: 3px; }
 .idea-desc  { font-size: 0.78em; color: #8b5e3c; line-height: 1.7; }
 
-/* 스킬 바 */
 .skill-row { margin-bottom: 10px; }
 .skill-label { font-size:0.78em; color:#8b5e3c; margin-bottom:3px; display:flex; justify-content:space-between; }
 .skill-bar-wrap { height:14px; background:#fffaf0; border:2px solid #3d2b1f; }
@@ -124,7 +191,23 @@ footer {
 <body>
 
   <header class="c_12">
-    <h1>🎮 게임 개발 이야기 | 나의 작은 세계</h1>
+    <h1>
+      <a href="index.html" class="logo"><img src="logo.png" width="80px"></a>
+      <span style="margin-left:10px;">🎮 게임 개발 이야기 | 나의 작은 세계</span>
+    </h1>
+
+    <input type="checkbox" id="menu-toggle">
+    <label for="menu-toggle" class="nav-hamburger">
+      <span></span><span></span><span></span>
+    </label>
+    <div class="nav-mobile-menu">
+      <a href="index.html">🌟 시작 화면</a>
+      <a href="work.html">💼 이전 회사</a>
+      <a href="travel.html">✈️ 여행</a>
+      <a href="dual-major.html">📚 복수전공</a>
+      <a href="future.html">🌈 앞으로의 꿈</a>
+      <a href="game-dev.html">🎮 게임 개발</a>
+    </div>
   </header>
 
   <aside id="menu" class="c_m_3 c_3">
@@ -304,7 +387,7 @@ footer {
         <p>
           <strong>[ 개발을 시작하면 날짜와 함께 기록해주세요! ]</strong><br>
           어떤 툴을 사용하기 시작했는지, 오늘 새로 배운 것은 무엇인지,<br>
-          막혔던 부분을 해결했을 때의 뿌듯함 같은 것들을요 💻
+          막혔던 부분을 해결했을 때의 뿌듯함 같은 것들이요 💻
         </p>
       </div>
     </div>

@@ -32,6 +32,117 @@ body {
 @media only screen and (min-width: 768px) {
     .c_3{width:25%;} .c_9{width:75%;} .c_12{width:100%;}
 }
+/* ===== 상단 햄버거 메뉴 ===== */
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    padding: 20px;
+    background-color: #ffd6c0;
+    border-bottom: 3px solid #3d2b1f;
+    box-shadow: 0 3px 0 #3d2b1f;
+    z-index: 1000;
+}
+
+/* 체크박스 숨김 */
+#menu-toggle {
+    display: none;
+}
+
+/* 햄버거 버튼 */
+.nav-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    cursor: pointer;
+    position: absolute;
+    top: 24px;
+    right: 20px;
+    z-index: 1001;
+}
+
+.nav-hamburger span {
+    width: 24px;
+    height: 3px;
+    background: #3d2b1f;
+    border-radius: 2px;
+}
+
+/* 모바일 메뉴 */
+.nav-mobile-menu {
+    display: none;
+    position: fixed;
+    top: 80px;
+    left: 0;
+    width: 100%;
+
+    background: #ffd6c0;
+    border-top: 3px solid #3d2b1f;
+    box-shadow: 0 4px 0 #3d2b1f;
+
+    padding: 12px;
+    z-index: 999;
+}
+
+.nav-mobile-menu a {
+    display: block;
+    padding: 12px 14px;
+    margin-bottom: 8px;
+
+    background: #fffaf0;
+    color: #3d2b1f;
+    text-decoration: none;
+
+    border: 2px solid #3d2b1f;
+    box-shadow: 2px 2px 0 #3d2b1f;
+
+    transition: transform .1s, box-shadow .1s, background .1s;
+}
+
+/* hover 유지 */
+.nav-mobile-menu a:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 4px 4px 0 #3d2b1f;
+    background: #fff9c4;
+}
+
+/* 체크 시 메뉴 열림 */
+#menu-toggle:checked ~ .nav-mobile-menu {
+    display: block;
+}
+
+/* 모바일 */
+@media only screen and (max-width: 768px) {
+
+    aside#menu {
+        display: none;
+    }
+
+    .nav-hamburger {
+        display: flex;
+    }
+
+    .c_m_9,
+    .c_9 {
+        width: 100%;
+    }
+}
+
+/* PC */
+@media only screen and (min-width: 769px) {
+
+    .nav-hamburger,
+    .nav-mobile-menu {
+        display: none !important;
+    }
+
+    aside#menu {
+        display: block;
+    }
+}
 
 /* ===== 헤더 ===== */
 header {
@@ -46,9 +157,15 @@ header h1 {
     color: #3d2b1f;
 }
 
+.logo {
+  text-decoration: none;
+  justify-content: center;
+}
+
 /* ===== 내비게이션 메뉴 (aside#menu) ===== */
 aside#menu {
     color: #ffffff;
+    margin-top: 90px;
 }
 aside#menu li {
     padding: 10px;
@@ -74,6 +191,7 @@ aside#menu li a {
 /* ===== 메인 콘텐츠 ===== */
 section#main {
     padding: 15px;
+    margin-top: 90px;
 }
 section#main h1 {
     font-size: 1.1em;
@@ -132,10 +250,11 @@ section#main p {
 }
 .px-btn:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 #3d2b1f; }
 .px-btn:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 #3d2b1f; }
+.px-btn.mint { background: #a8f0d8;}
 .px-btn.pink     { background: #ffcce0; }
 .px-btn.yellow   { background: #fff9c4; }
 .px-btn.lavender { background: #e8d8ff; }
-.px-btn.mint { background:#9cffed; }
+.px-btn.orange { background: #FFDA97; }
 
 /* 이야기 지도 게시판 */
 .notice-board {
@@ -156,13 +275,90 @@ section#main p {
     font-size: 18px;
 }
 
-/* 카드 목록 */
-.card-list li {
-    margin: 8px 0;
-    border: 2px solid #3d2b1f;
-    box-shadow: 3px 3px 0 #3d2b1f;
+/* ===== 이야기 지도 카드 UI ===== */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 18px;
+    margin-top: 16px;
+}
+
+.story-card {
     background: #ffffff;
+    border: 3px solid #3d2b1f;
+    box-shadow: 5px 5px 0 #3d2b1f;
+    padding: 0;
     overflow: hidden;
+    text-decoration: none;
+    color: #3d2b1f;
+    display: block;
+    transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.story-card:hover {
+    transform: translate(-3px,-3px);
+    box-shadow: 8px 8px 0 #3d2b1f;
+}
+
+.card-thumb {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    border-bottom: 3px solid #3d2b1f;
+    position: relative;
+    overflow: hidden;
+}
+
+.card-thumb::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+    repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 3px,
+        rgba(0,0,0,0.03) 3px,
+        rgba(0,0,0,0.03) 4px
+    );
+}
+
+.card-body {
+    padding: 16px;
+}
+
+.card-tag {
+    display: inline-block;
+    padding: 3px 8px;
+    font-size: 0.72em;
+    color: #3d2b1f;
+    border: 2px solid #3d2b1f;
+    margin-bottom: 8px;
+}
+
+.card-title {
+    font-size: 0.92em;
+    line-height: 1.6;
+    margin-bottom: 8px;
+}
+
+.card-desc {
+    font-size: 0.8em;
+    color: #8b5e3c;
+    line-height: 1.7;
+}
+
+.card-footer-row {
+    padding: 10px 16px;
+    border-top: 2px solid #3d2b1f;
+    background: #ddf4ff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.72em;
+    color: #8b5e3c;
 }
 .card-list li a {
     display: block;
@@ -257,15 +453,35 @@ footer {
 
   <!-- ===== 헤더 ===== -->
   <header class="c_12">
-    <h1>✨ 나의 작은 세계 ✨</h1>
+  <div class="logo"><a href="index.html"><img src="logo.png" width="80px"></a></div>
+  
+  <input type="checkbox" id="menu-toggle">
+
+  <label for="menu-toggle" class="nav-hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </label>
+
+  <div class="nav-mobile-menu">
+    <a href="index.html">🌟 시작 화면</a>
+    <a href="work.html">💼 이전 회사</a>
+    <a href="travel.html">✈️ 여행</a>
+    <a href="dual-major.html">📚 복수전공</a>
+    <a href="future.html">🌈 앞으로의 꿈</a>
+    <a href="game-dev.html">🎮 게임 개발</a>
+  </div>
+
   </header>
+
+
 
   <!-- ===== 내비게이션 메뉴 ===== -->
   <aside id="menu" class="c_m_3 c_3">
     <ul>
       <li><a href="index.html">🌟 시작 화면</a></li>
       <li><a href="work.html">💼 이전 회사</a></li>
-      <li><a href="travel.html">✈️ 여행</a></li>
+      <li><a href="travel.html">✈️ 여행 </a></li>
       <li><a href="dual-major.html">📚 복수전공</a></li>
       <li><a href="future.html">🌈 앞으로의 꿈</a></li>
       <li><a href="game-dev.html">🎮 게임 개발</a></li>
@@ -285,9 +501,10 @@ footer {
 
     <div style="margin: 12px 0;">
       <a class="px-btn mint"   href="work.html">💼 회사 이야기</a>
-      <a class="px-btn yellow"     href="dual-major.html">📚 복수전공 이야기</a>
       <a class="px-btn lavender"   href="travel.html">✈️ 여행 이야기</a>
-      <a class="px-btn pink" href="future.html">🌈 꿈 이야기</a>
+      <a class="px-btn yellow"     href="dual-major.html">📚 복수전공 이야기</a>
+      <a class="px-btn orange" href="future.html">🌈 꿈 이야기</a>
+      <a class="px-btn pink"  href="game-dev.html">🎮 게임 개발 이야기</a>
     </div>
 
     <div class="notice-board">
@@ -296,44 +513,111 @@ footer {
       그리고 앞으로의 꿈까지! 천천히 읽어주세요 🌷
     </div>
 
-    <ul class="card-list">
-      <li>
-        <a href="work.html">
-          <span class="card-tag">Chapter 01</span><strong>이전 회사 이야기</strong>
-          <p class="card-desc">학교 가기 전, 다니던 회사에서의 경험과 배웠던 것들에 대한 이야기예요.</p>
-        </a>
-      </li>
-      <li>
-        <a href="dual-major.html">
-          <span class="card-tag">Chapter 02</span><strong>복수전공 이야기</strong>
-          <p class="card-desc">두 개의 전공을 선택한 이유와 공부를 하며 느낀 점에 대한 이야기예요.</p>
-        </a>
-      </li>
-      <li>
-        <a href="travel.html">
-          <span class="card-tag">Chapter 03</span><strong>여행 이야기</strong>
-          <p class="card-desc">다녀온 여행들 중에서 인상깊은 여행, 설레고 따뜻했던 기억들을 기록했어요.</p>
-        </a>
-      </li>
-      <li>
-        <a href="future.html">
-          <span class="card-tag">Chapter 04</span><strong>앞으로의 꿈 이야기</strong>
-          <p class="card-desc">지금 이 순간에도 꿈꾸고 있는 것들에 대한 이야기예요.</p>
-        </a>
-      </li>
-      <li>
-        <a href="game-dev.html">
-          <span class="card-tag">Chapter 05</span><strong>게임 개발 이야기</strong>
-          <p class="card-desc">언젠가 귀엽고 아기자기한 게임을 만들고 싶어요. 그 꿈의 시작이에요.</p>
-        </a>
-      </li>
-      <li>
-        <a href="#" style="opacity:0.5; cursor:default;">
-          <span class="card-tag">Coming soon</span><strong>이야기 추가 예정</strong>
-          <p class="card-desc">새로운 이야기가 쌓이면 여기에 추가할 거예요 🌱</p>
-        </a>
-      </li>
-    </ul>
+ <div class="card-grid">
+
+  <a class="story-card" href="work.html">
+    <div class="card-thumb" style="background: linear-gradient(135deg,#a8f0d8,#ddf4ff);">
+      💼
+    </div>
+    <div class="card-body">
+      <div class="card-tag" style="background:#a8f0d8;">Chapter 01</div>
+      <div class="card-title">이전 회사 이야기</div>
+      <div class="card-desc">
+        학교 가기 전, 다니던 회사에서의 경험과 배웠던 것들에 대한 이야기예요.
+      </div>
+    </div>
+    <div class="card-footer-row">
+      <span>READ →</span>
+      <span>☕</span>
+    </div>
+  </a>
+
+  <a class="story-card" href="travel.html">
+    <div class="card-thumb" style="background: linear-gradient(135deg,#e8d8ff,#ffcce0);">
+      ✈️
+    </div>
+    <div class="card-body">
+      <div class="card-tag" style="background:#e8d8ff;">Chapter 02</div>
+      <div class="card-title">여행 이야기</div>
+      <div class="card-desc">
+        다녀온 여행들 중에서, 설레고 따뜻했던 기억들을 기록했어요.
+      </div>
+    </div>
+    <div class="card-footer-row">
+      <span>READ →</span>
+      <span>🗺️</span>
+    </div>
+  </a>
+
+    <a class="story-card" href="dual-major.html">
+    <div class="card-thumb" style="background: linear-gradient(135deg,#fffcde,#fffc94);">
+      📚
+    </div>
+    <div class="card-body">
+      <div class="card-tag" style="background:#fff9c4;">Chapter 03</div>
+      <div class="card-title">복수전공 이야기</div>
+      <div class="card-desc">
+        두 개의 전공을 선택한 이유와 공부를 하며 느낀 점에 대한 이야기예요.
+      </div>
+    </div>
+    <div class="card-footer-row">
+      <span>READ →</span>
+      <span>📖</span>
+    </div>
+  </a>
+
+  <a class="story-card" href="future.html">
+    <div class="card-thumb" style="background: linear-gradient(135deg,#ffeece,#FFDA97);">
+      🌈
+    </div>
+    <div class="card-body">
+      <div class="card-tag" style="background:#b8e8ff;">Chapter 04</div>
+      <div class="card-title">앞으로의 꿈 이야기</div>
+      <div class="card-desc">
+        지금 이 순간에도 꿈꾸고 있는 것들에 대한 이야기예요.
+      </div>
+    </div>
+    <div class="card-footer-row">
+      <span>READ →</span>
+      <span>⭐</span>
+    </div>
+  </a>
+
+  <a class="story-card" href="game-dev.html">
+    <div class="card-thumb" style="background: linear-gradient(135deg,#ffcce0,#fff9c4);">
+      🎮
+    </div>
+    <div class="card-body">
+      <div class="card-tag" style="background:#ffcce0;">Chapter 05</div>
+      <div class="card-title">게임 개발 이야기</div>
+      <div class="card-desc">
+        언젠가 귀엽고 아기자기한 게임을 만들고 싶어요. 그 꿈의 시작이에요.
+      </div>
+    </div>
+    <div class="card-footer-row">
+      <span>READ →</span>
+      <span>🕹️</span>
+    </div>
+  </a>
+
+  <div class="story-card" style="opacity:0.5; cursor:default; background:#fffaf0;">
+    <div class="card-thumb" style="background:#fffaf0;">
+      <span style="font-size:24px">＋</span>
+    </div>
+    <div class="card-body">
+      <div class="card-tag">Coming soon</div>
+      <div class="card-title">이야기 추가 예정</div>
+      <div class="card-desc">
+        새로운 이야기가 쌓이면 여기에 추가할 거예요 🌱
+      </div>
+    </div>
+    <div class="card-footer-row">
+      <span>TBD ...</span>
+      <span>🌱</span>
+    </div>
+  </div>
+
+ </div> 
 
     <!-- 상태 패널 -->
     <div class="status-panel">
